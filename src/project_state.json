@@ -1,0 +1,208 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 7,
+  "summary": "Build a 4K Tile/Skin Generator for creating 3840x2160 seamless, tileable PBR textures with multiple export maps and sharing, aimed at artists and game/VFX/archviz users.",
+  "architectural_notes": [
+    "Creation records should only be written to backend storage when user explicitly marks a generation as 'usable' (opt-in persistence), implying a 'usable' flag/state and a user action to trigger save."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-implement-a-generator-workspace-ui-that-creates-tileable-seamless-textures-at-exactly-3840x2160-4k-and-lets-the-user-choose-a-texture-category-e-g-material-skin-and-seed-variation-controls-before-generating-outputs",
+      "title": "Implement a generator workspace UI that creates tileable, seamless textures at exactly 3840x2160 (4K) and lets the user choose a texture category (e.g., material/skin) and seed/variation controls before generating outputs.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-support-uploading-and-managing-reference-visuals-images-that-can-be-used-to-guide-generation-including-basic-validation-file-type-size-and-a-reference-gallery-shown-in-the-workspace",
+      "title": "Support uploading and managing reference visuals (images) that can be used to guide generation, including basic validation (file type/size) and a reference gallery shown in the workspace.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-generate-and-present-separate-pbr-map-outputs-for-each-creation-albedo-normal-roughness-fluid-and-metallic-and-display-them-as-a-coherent-set-tied-to-a-single-generation-run-same-seed-settings",
+      "title": "Generate and present separate PBR map outputs for each creation: albedo, normal, roughness, fluid, and metallic, and display them as a coherent set tied to a single generation run (same seed/settings).",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-3d-tiling-preview-test-mode-using-a-sample-object-material-that-tiles-the-generated-maps-across-the-surface-repeat-1-in-u-and-v-so-users-can-visually-verify-seamlessness-include-controls-for-tiling-amount-and-lighting-camera-presets",
+      "title": "Add a 3D tiling preview/test mode using a sample object/material that tiles the generated maps across the surface (repeat > 1 in U and V) so users can visually verify seamlessness; include controls for tiling amount and lighting/camera presets.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-export-download-options-for-each-generated-map-and-for-the-full-set-as-a-bundle-supporting-shareable-image-formats-png-and-jpg-and-include-tiff-export-if-feasible-in-the-browser-without-requiring-a-backend-image-conversion-service",
+      "title": "Implement export/download options for each generated map and for the full set as a bundle, supporting shareable image formats PNG and JPG, and include TIFF export if feasible in the browser without requiring a backend image conversion service.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-creative-freedom-b-mode-toggle-that-applies-generation-parameters-temperature-1-5-and-top-p-0-90-as-named-settings-in-the-ui-and-makes-outputs-intentionally-more-varied-the-chosen-mode-and-parameters-must-be-displayed-alongside-the-generated-result-metadata",
+      "title": "Add a “Creative Freedom-B” mode toggle that applies generation parameters Temperature=1.5 and Top-P=0.90 (as named settings in the UI) and makes outputs intentionally more varied; the chosen mode and parameters must be displayed alongside the generated result metadata.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-enforce-the-creation-output-composition-rule-in-the-results-view-by-presenting-1-a-written-description-block-2-a-reference-visuals-block-showing-what-was-uploaded-used-and-3-a-creative-freedom-b-contribution-block-showing-whether-it-was-used-and-what-it-influenced-settings-used-for-every-generated-run",
+      "title": "Enforce the creation output composition rule in the results view by presenting: (1) a written description block, (2) a reference visuals block (showing what was uploaded/used), and (3) a Creative Freedom-B contribution block (showing whether it was used and what it influenced/settings used) for every generated run.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-gallery-page-that-lists-saved-creation-records-from-the-backend-allows-opening-a-record-to-view-its-metadata-description-settings-references-used-and-if-available-shows-stored-thumbnails-include-a-clear-workflow-that-full-resolution-assets-are-downloaded-exported-from-the-generator-session-rather-than-fetched-from-the-backend",
+      "title": "Add a gallery page that lists saved creation records from the backend, allows opening a record to view its metadata (description/settings/references used) and, if available, shows stored thumbnails; include a clear workflow that full-resolution assets are downloaded/exported from the generator session rather than fetched from the backend.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-consistent-creative-visual-theme-across-the-app-suitable-for-a-texture-material-tool-colors-typography-spacing-and-layout-avoiding-blue-purple-as-primary-colors-and-ensure-all-user-facing-text-is-in-english",
+      "title": "Apply a consistent, creative visual theme across the app suitable for a texture/material tool (colors, typography, spacing, and layout), avoiding blue/purple as primary colors, and ensure all user-facing text is in English.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-and-render-required-generated-static-brand-images-logo-and-a-hero-banner-from-frontend-public-assets-generated-and-use-them-in-the-app-shell-e-g-header-and-landing-workspace",
+      "title": "Add and render required generated static brand images (logo and a hero/banner) from frontend/public/assets/generated and use them in the app shell (e.g., header and landing/workspace).",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-explicit-usable-flag-to-persisted-creation-records-and-ensure-that-only-records-marked-as-usable-are-stored-and-returned-in-user-facing-record-lists",
+      "title": "Add an explicit `usable` flag to persisted creation records and ensure that only records marked as usable are stored and returned in user-facing record lists.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-workspace-save-to-gallery-flow-to-require-the-user-to-explicitly-mark-a-generated-run-as-usable-before-it-can-be-saved",
+      "title": "Update the Workspace “Save to Gallery” flow to require the user to explicitly mark a generated run as usable before it can be saved.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-gallery-and-creation-detail-pages-to-remain-consistent-with-the-new-usable-only-storage-rule",
+      "title": "Update gallery and creation detail pages to remain consistent with the new usable-only storage rule.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-simple-filter-control-on-the-gallery-page-that-lets-the-user-quickly-toggle-between-viewing-only-creations-marked-as-usable-and-viewing-all-returned-creation-records",
+      "title": "Add a simple filter control on the Gallery page that lets the user quickly toggle between viewing only creations marked as usable and viewing all returned creation records.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-gallery-item-navigation-and-creation-detail-display-remain-consistent-with-the-selected-usability-filter-by-persisting-the-filter-state-in-the-url-query-parameter-and-using-it-when-resolving-the-record-index-on-the-creation-detail-page",
+      "title": "Ensure Gallery item navigation and Creation Detail display remain consistent with the selected usability filter by persisting the filter state in the URL (query parameter) and using it when resolving the record index on the Creation Detail page.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Generate seamless 4K (3840x2160) tileable textures using a 3D high-resolution texture source and seamless-tiling workflow",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Produce and export separate PBR maps: albedo, normal, roughness, fluid, metallic",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Provide a 3D tiling preview/test mode to verify seamlessness by tiling the texture on a sample object/material",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Support exporting shareable image formats (PNG, JPG, TIFF) for generated textures/maps",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Support using reference visuals (uploaded images) as inputs to guide generation",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Add a 'Creative Freedom-B' generation mode with Temperature=1.5 and Top-P=0.90 for more creative outputs",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Enforce creation output composition rule: ~33.33% written description, ~33.33% reference visuals (uploaded/used), ~33.33% Creative Freedom-B contribution",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-15",
+      "summary": "Create a minimal backend data model and API to store a shareable “creation record” (metadata only) per user, including: title/name, timestamp, generation settings (including Creative Freedom-B toggle and parameters), and optional small preview thumbnails (low-resolution) while keeping full 4K images client-side for download.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-16",
+      "summary": "Only persist/store creation records that the user explicitly marks as 'usable' (add a usable flag + UI control; do not save unmarked generations)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-20",
+      "summary": "Add a conditional Motoko state migration to support the new `usable` field on existing `CreationRecord` entries.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-21",
+      "summary": "Add a UI filter/control to quickly view only creations marked as 'usable' (e.g., in gallery/results lists)",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "4K Tile/Skin Generator",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

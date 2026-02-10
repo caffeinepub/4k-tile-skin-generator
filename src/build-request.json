@@ -1,0 +1,71 @@
+{
+  "kind": "build_request",
+  "title": "Add a Gallery filter control to view only usable creations",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-16",
+      "text": "Add a simple filter control on the Gallery page that lets the user quickly toggle between viewing only creations marked as usable and viewing all returned creation records.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "If you'd like, I can help you add a small filter in the UI to quickly view only the usable ones.",
+          "Yes, let's do that. Great idea."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Gallery page shows a clearly labeled filter control with English user-facing text (e.g., “Usable only”).",
+        "Toggling the filter immediately updates the gallery grid contents without a full page reload.",
+        "When the filter is enabled, only records where `record.usable === true` are shown.",
+        "When the filter is disabled, all records returned by `useGetAllCreationRecords()` are shown (including any non-usable records if they exist)."
+      ]
+    },
+    {
+      "id": "REQ-17",
+      "text": "Ensure Gallery item navigation and Creation Detail display remain consistent with the selected usability filter by persisting the filter state in the URL (query parameter) and using it when resolving the record index on the Creation Detail page.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4",
+          "msg-5"
+        ],
+        "quotes": [
+          "add a small filter in the UI to quickly view only the usable ones.",
+          "Yes, let's do that. Great idea."
+        ]
+      },
+      "acceptanceCriteria": [
+        "When clicking a creation card in the Gallery, the current filter state is preserved in the resulting Creation Detail URL via a query parameter (e.g., `?usableOnly=1`).",
+        "Creation Detail page uses the same filter state from the URL when selecting the record by index, so the record opened matches the one clicked in the Gallery.",
+        "If the URL contains a filter state that results in the index being out of range (e.g., record not found under that filter), the existing “Creation Not Found” empty-state is shown with English user-facing text."
+      ]
+    }
+  ],
+  "constraints": [
+    "Use English for any user-facing text.",
+    "Do not edit files under frontend/src/components/ui (compose existing UI components instead).",
+    "Do not modify immutable hook files listed in SYSTEM_CONTEXT (e.g., frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx).",
+    "Keep the backend behavior and schema unchanged; this request is a UI filter only."
+  ],
+  "nonGoals": [
+    "Adding new backend endpoints or changing `getAllCreationRecords()` semantics.",
+    "Implementing additional filters (search, category, Creative Freedom-B, date ranges) beyond the usability filter requested."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

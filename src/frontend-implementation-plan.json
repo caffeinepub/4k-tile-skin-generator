@@ -1,0 +1,55 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Gallery usability filter with URL-persisted state",
+  "requirements": [
+    {
+      "id": "REQ-16",
+      "summary": "Add an on-page toggle on Gallery to switch between showing usable-only creations and all returned creations.",
+      "acceptanceCriteria": [
+        "Gallery page shows a clearly labeled filter control with English user-facing text (e.g., “Usable only”).",
+        "Toggling the filter immediately updates the gallery grid contents without a full page reload.",
+        "When the filter is enabled, only records where `record.usable === true` are shown.",
+        "When the filter is disabled, all records returned by `useGetAllCreationRecords()` are shown (including any non-usable records if they exist)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/GalleryPage.tsx",
+          "operation": "modify",
+          "description": "Add a clearly labeled “Usable only” filter control and apply it to the creation records list before sorting/rendering; keep updates instant by driving filtering from component/router state (no reload). Use existing UI building blocks (e.g., existing button/card components) without editing anything under frontend/src/components/ui."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Update the /gallery route to support a typed/search-validated query parameter (e.g., usableOnly) so the Gallery filter state can be represented in the URL while keeping backend behavior unchanged."
+        }
+      ]
+    },
+    {
+      "id": "REQ-17",
+      "summary": "Persist the Gallery usability filter state in the URL and ensure Creation Detail selection by index matches the filtered list.",
+      "acceptanceCriteria": [
+        "When clicking a creation card in the Gallery, the current filter state is preserved in the resulting Creation Detail URL via a query parameter (e.g., `?usableOnly=1`).",
+        "Creation Detail page uses the same filter state from the URL when selecting the record by index, so the record opened matches the one clicked in the Gallery.",
+        "If the URL contains a filter state that results in the index being out of range (e.g., record not found under that filter), the existing “Creation Not Found” empty-state is shown with English user-facing text."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/GalleryPage.tsx",
+          "operation": "modify",
+          "description": "When navigating to a Creation Detail card, include the current usability filter state in the navigation/search so the resulting URL preserves it (e.g., usableOnly=1 when enabled)."
+        },
+        {
+          "path": "frontend/src/pages/CreationDetailPage.tsx",
+          "operation": "modify",
+          "description": "Read the usability filter state from the URL query parameter and use it to build the same filtered+sorted record list before resolving the record by index; if the filtered list does not contain the index, continue showing the existing “Creation Not Found” empty state with English user-facing text."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Update the /gallery/$index route to support the same search/query parameter (e.g., usableOnly) as Gallery so Creation Detail can reliably interpret the filter state from the URL."
+        }
+      ]
+    }
+  ]
+}
